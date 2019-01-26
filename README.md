@@ -1,7 +1,8 @@
 # celery_test
 
 一个测试celery这个玩意的小脚本，celery的官称是分布式队列，那就试试到底是如何工作的吧
-首先感谢这篇文章的博主　https://blog.csdn.net/suwenkun1126/article/details/78355953　　深度优先的简单例子
+首先感谢这篇文章的博主　https://blog.csdn.net/suwenkun1126/article/details/78355953　　
+深度优先的简单例子
 所谓的深度优先，就是你要爬取网站的深度，这个一般都是以实际情况来定义的
 深度优先容易实现的地方是可以用递归来写，只要定义好阀值，写好逻辑判断等等
 
