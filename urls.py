@@ -27,8 +27,7 @@ exist_urls=[]
 headers={
     'User-Agent':'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.62 Safari/537.36',
 }
-#定义一个用来获取页面所有符合条件的链接函数
-def scrapypy(url):
+def get_link(url):
     try:
         response=requests.get(url=url,headers=headers)
         response.encoding='UTF-8'
@@ -36,16 +35,14 @@ def scrapypy(url):
         link_lists=re.findall('.*?<a target=_blank href="/item/([^:#=<>]*?)".*?</a>',html)
         return link_lists
     except Exception as e:
-        print(e)
-        print('下载失败:'+url)
-        return None
+        pass
     finally:
         exist_urls.append(url)
 
 #主函数用来定义输出格式，当爬取深度小于三层时，递归调用主函数，继续爬取第二层的所有链接
 def main(start_url,depth=1):
     count=0
-    link_lists=scrapypy(start_url)
+    link_lists=get_link(start_url)
     if link_lists:
         unique_lists=list(set(link_lists)-set(exist_urls))
         for unique_list in unique_lists:
